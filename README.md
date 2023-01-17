@@ -1,6 +1,6 @@
 # 🎉 Docker Nginx Proxy Manager
 
-Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise, including free SSL, without having to know too much about Nginx or Letsencrypt.
+Nginx Proxy Manager is an open-source tool that provides a web interface for managing Nginx proxy servers. It allows for creating and managing proxies, obtaining and renewing SSL certificates, and provides statistics and reporting.
 
 ![version](https://img.shields.io/badge/version-1.0-blue)
 ![rating](https://img.shields.io/badge/rating-★★★★★-yellow)
