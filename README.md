@@ -8,7 +8,7 @@ Nginx Proxy Manager is an open-source tool that provides a web interface for man
 
 ### 🥈 Run
 
-- [http://localhost:8181/](http://localhost:8181/) username : `admin` password : `admin`
+- [http://localhost:81/](http://localhost:81/) username : `admin` password : `admin`
 
 ```shell
 docker-compose up -d
