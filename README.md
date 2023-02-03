@@ -6,7 +6,7 @@ Nginx Proxy Manager is an open-source tool that provides a web interface for man
 ![rating](https://img.shields.io/badge/rating-★★★★★-yellow)
 ![uptime](https://img.shields.io/badge/uptime-100%25-brightgreen)
 
-### 🥈 Run
+### 🏆 Run
 
 - [http://localhost:81/](http://localhost:81/) username : `admin` password : `admin`
 
