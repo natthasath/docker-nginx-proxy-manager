@@ -11,13 +11,9 @@ services:
     networks:
       - default
     volumes:
-      - data:/data
+      - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
 
 networks:
   default:
     driver: bridge
-
-volumes:
-  data:
-    driver: local
