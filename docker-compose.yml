@@ -22,10 +22,10 @@ services:
 
 networks:
   default:
-    name: nginx_proxy_manager_network
+    name: ${NGINX_PROXY_MANAGER_CONTAINER_NAME}_network
     driver: bridge
 
 volumes:
   default:
-    name: nginx_proxy_manager_data
+    name: ${NGINX_PROXY_MANAGER_CONTAINER_NAME}_data
     driver: local
