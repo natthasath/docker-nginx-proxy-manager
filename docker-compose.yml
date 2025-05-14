@@ -1,3 +1,5 @@
+name: ${GLOBAL_NAME}
+
 services:
   nginx_proxy_manager:
     container_name: ${NGINX_PROXY_MANAGER_CONTAINER_NAME}
@@ -10,8 +12,8 @@ services:
       - ${NGINX_PROXY_MANAGER_HTTPS_PORT}:443
       - ${NGINX_PROXY_MANAGER_ADMIN_PORT}:81
     volumes:
-      - ${NGINX_PROXY_MANAGER_DATA_VOLUME}:/data
-      - ${NGINX_PROXY_MANAGER_LETSENCRYPT_VOLUME}:/etc/letsencrypt
+      - nginx_proxy_manager_data:/data
+      - nginx_proxy_manager_letsencrypt:/etc/letsencrypt
     networks:
       - default
     healthcheck:
@@ -20,12 +22,34 @@ services:
       timeout: ${HEALTHCHECK_TIMEOUT}
       retries: ${HEALTHCHECK_RETRIES}
 
+  postgres:
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    image: ${POSTGRES_IMAGE_NAME}:${POSTGRES_IMAGE_VERSION}
+    restart: ${RESTART_POLICY}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - TZ=${TIMEZONE}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - default
+
 networks:
   default:
     name: ${NGINX_PROXY_MANAGER_CONTAINER_NAME}_network
     driver: bridge
 
 volumes:
-  default:
+  nginx_proxy_manager_data:
     name: ${NGINX_PROXY_MANAGER_CONTAINER_NAME}_data
+    driver: local
+  nginx_proxy_manager_letsencrypt:
+    name: ${NGINX_PROXY_MANAGER_CONTAINER_NAME}_letsencrypt
+    driver: local
+  postgres_data:
+    name: ${POSTGRES_CONTAINER_NAME}_data
     driver: local
